@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Image | Pixel Forge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #1f4037, #99f2c8);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .upload-container {
+            background: #ffffffcc;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        select, button {
+            padding: 12px 20px;
+            font-size: 1rem;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            background: #00b09b;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #019875;
+        }
+
+        .nav-links {
+            margin-top: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #00695c;
+            font-weight: 500;
+            margin: 0 10px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h2>Upload Your Image</h2>
+        <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required><br>
+
+            <select name="filter">
+                <option value="sketch">Sketch</option>
+                <option value="cartoon">Cartoonize</option>
+                <option value="vintage">Vintage</option>
+                <option value="hdr">HDR</option>
+                <option value="style_transfer">Style Transfer</option>
+            </select><br>
+
+            <button type="submit">Apply Filter</button>
+        </form>
+
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">🏠 Home</a> |
+            <a href="{{ url_for('view_history') }}">📜 View History</a> |
+            <a href="{{ url_for('logout') }}">🚪 Logout</a>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

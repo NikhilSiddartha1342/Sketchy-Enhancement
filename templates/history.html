@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload History - Pixel Forge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .image-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 260px;
+        }
+
+        .image-card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .image-card p {
+            margin: 10px 0 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Your Upload History</h2>
+    {% if history %}
+    <div class="gallery">
+        {% for original, result in history %}
+        <div class="image-card">
+            <p><strong>Original</strong></p>
+            <img src="{{ url_for('static', filename='uploads/' + original) }}" alt="Original Image">
+            <p><strong>Filtered</strong></p>
+            <img src="{{ url_for('static', filename='outputs/' + result) }}" alt="Filtered Image">
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p style="text-align:center;">You haven't uploaded any images yet.</p>
+    {% endif %}
+</body>
+</html>

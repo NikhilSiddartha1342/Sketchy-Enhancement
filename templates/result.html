@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Result | Pixel Forge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #000046, #1CB5E0);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 2.8rem;
+            color: #fdd835;
+        }
+
+        .image-container {
+            margin: 30px auto;
+            max-width: 90%;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .actions {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .actions a {
+            padding: 14px 28px;
+            background: #00e3ae;
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .actions a:hover {
+            background: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Here’s Your Filtered Image ✨</h1>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='outputs/' + filename) }}" alt="Filtered Result">
+    </div>
+
+    <div class="actions">
+        <a href="{{ url_for('upload') }}">Try Another Image</a>
+        <a href="{{ url_for('view_history') }}">View History</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    </div>
+</body>
+</html>
